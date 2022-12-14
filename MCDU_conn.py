@@ -92,7 +92,7 @@ class BaseClient:
     def connect(self, address, family:int, typ:int, proto:int):
         self.__address = address
         self.__socket = socket.socket(family, typ, proto)
-        #self.__websocekt = create_connection("ws://192.168.11.91:8380/")
+        self.__websocekt = create_connection("ws://192.168.11.91:8380/")
         self.__socket.settimeout(self.__timeout)
         self.__socket.connect(self.__address)
 
@@ -122,7 +122,7 @@ class BaseClient:
             if( key_id in MCDU_comm2):
                 key_server = MCDU_comm2[key_id]
                 print(key_server)
-                #self.__websocekt.send(str(key_server))
+                self.__websocekt.send(str(key_server))
 
 class InetClient(BaseClient):
     def __init__(self, host:str="192.168.11.92", port:int=10346) -> None:
